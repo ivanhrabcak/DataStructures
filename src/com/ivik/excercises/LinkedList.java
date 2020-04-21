@@ -2,100 +2,74 @@ package com.ivik.excercises;
 
 public class LinkedList {
     private Node start;
-    private int size;
-    private Node end;
 
     public LinkedList(Node start) {
         this.start = start;
-        Node currentNode = start;
-        int l = 0;
-        l++;
-        if (currentNode.next == null) {
-            end = currentNode;
-        }
-        currentNode = currentNode.next;
-
-        while (currentNode != null) {
-            l++;
-            if (currentNode.next == null) {
-                end = currentNode;
-            }
-            currentNode = currentNode.next;
-        }
-        size = l;
     }
 
     public int getSize() {
-        return size;
+        Node currentNode = start;
+        int l = 0;
+        while (currentNode != null) {
+            currentNode = currentNode.next;
+            l++;
+        }
+        return l;
     }
 
     public void remove(int index) {
-        if (index > size || index < 0) {
+        if (index < 0) {
             throw new ArrayIndexOutOfBoundsException();
         }
         if (index == 0) {
             start = start.next;
         }
-        if (index > (size / 2)) {
-            Node currentNode = end;
-            for (int i = size; i >= size / 2; i--) {
-                if (i == index) {
-                    currentNode.previous.next = currentNode.next; // XD
-                    size--;
-                    return;
-                }
-                currentNode = currentNode.previous;
+
+        int i = 0;
+        Node currentNode = start;
+        while (true) {
+            if (i == index) {
+                currentNode.previous.next = currentNode.next;
+                return;
             }
-        }
-        else {
-            Node currentNode = start;
-            for (int i = 0; i <= size / 2; i++) {
-                if (i == index) {
-                    currentNode.previous.next = currentNode.next;
-                    size--;
-                    return;
-                }
-                currentNode = currentNode.next;
+            if (currentNode == null) {
+                throw new ArrayIndexOutOfBoundsException();
             }
+            currentNode = currentNode.next;
+            i++;
         }
     }
 
     public int get(int index) {
-        if (index > size || index < 0) {
+        if (index < 0) {
             throw new ArrayIndexOutOfBoundsException();
         }
         if (index == 0) {
             return start.number;
         }
-        if (index > (size / 2)) {
-            Node currentNode = end;
-            for (int i = size; i >= size / 2; i--) {
-                if (i == index) {
-                    return currentNode.number;
-                }
-                currentNode = currentNode.previous;
-            }
-        }
-        else {
-            Node currentNode = start;
-            for (int i = 0; i <= size / 2; i++) {
-                if (i == index) {
-                    return currentNode.number;
-                }
-                currentNode = currentNode.next;
-            }
 
+        int i = 0;
+        Node currentNode = start;
+        while (true) {
+            if (i == index) {
+                return currentNode.number;
+            }
+            if (currentNode == null) {
+                throw new ArrayIndexOutOfBoundsException();
+            }
+            currentNode = currentNode.next;
+            i++;
         }
-        return -1;
     }
 
     @Override
     public String toString() {
         String s = "[";
         Node currentNode = start;
-        for (int i = 0; i < size; i++) {
-            if (i == size - 1) {
+        while (true) {
+            if (currentNode.next == null) {
                 s = s + String.valueOf(currentNode.number) + "]";
+                break;
             }
             else {
                 s = s + String.valueOf(currentNode.number) + ", ";

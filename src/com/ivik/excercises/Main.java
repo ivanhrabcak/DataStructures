@@ -1,11 +1,10 @@
 package com.ivik.excercises;
 
-import java.util.Stack;
+import java.util.Queue;
 
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
         Node start = new Node();
         Node previousNode = start;
         for (int i = 0; i <= 10; i++) {
@@ -15,21 +14,29 @@ public class Main {
         }
 
         /* Linked list */
-        LinkedList list = new LinkedList(start);
-        System.out.println(list);
+//        LinkedList list = new LinkedList(start);
+//        System.out.println(list.getSize());
 
         // get middle element from the list
-        System.out.println(list.get(list.getSize() / 2));
+//        System.out.println(list.get(list.getSize() / 2));
 
         // remove middle element from the list
-        list.remove(list.getSize() / 2);
+//        list.remove(list.getSize() / 2);
 
         // get middle element from the list
-        System.out.println(list.get(list.getSize() / 2));
+//        System.out.println(list.get(list.getSize() / 2));
 
-        System.out.println(list);
+//        System.out.println(list);
 
-        Stack<Integer> stack = new Stack<>();
+//        /* Stack */
+        Stack stack = new Stack();
+        for (int i = 0; i <= 10; i++) {
+            stack.push(i);
+        }
+
+        stack.remove(5); // remove 7
+        System.out.println(stack.toString()); // [10, 9, 8, 6, 5, 4, 3, 2, 1, 0]
+
 
 
     }
