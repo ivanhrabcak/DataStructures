@@ -1,4 +1,4 @@
-package com.ivik.excercises;
+package com.ivik.excercises.stack;
 
 public class StackNode { // Borrowed
     private StackNode next;

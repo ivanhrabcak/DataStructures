@@ -1,4 +1,4 @@
-package com.ivik.excercises;
+package com.ivik.excercises.linkedlist;
 
 public class LinkedList {
     private Node start;

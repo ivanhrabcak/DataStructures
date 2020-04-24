@@ -1,6 +1,4 @@
-package com.ivik.excercises;
-
-import java.util.ArrayList;
+package com.ivik.excercises.stack;
 
 public class Stack {
     private StackNode start;
@@ -11,8 +9,13 @@ public class Stack {
         start = newNode;
     }
 
-    public void pop() {
+    public int pop() {
+        if (start == null) {
+            return -1;
+        }
+        int value = start.getNumber();
         start = start.getNext();
+        return value;
     }
 
     public int peek() {
@@ -27,18 +30,15 @@ public class Stack {
         if (index < 0) {
             throw new ArrayIndexOutOfBoundsException();
         }
-        StackNode currentNode = start;
+        int currentNumber = pop();
         Stack stack = new Stack();
         int l = 0;
-        for (int i = 0; true; i++) {
+        for (int i = 0; currentNumber != -1; i++) {
             if (!(i == index)) {
-                stack.push(currentNode.getNumber());
+                stack.push(currentNumber);
+                l++;
             }
-            if (currentNode.getNext() == null) {
-                break;
-            }
-            currentNode = currentNode.getNext();
-            l++;
+            currentNumber = pop();
         }
 
         if (index > l) {
@@ -47,24 +47,38 @@ public class Stack {
 
         empty();
         for (int i = 0; i < l; i++) {
-            push(stack.peek());
-            stack.pop();
+            push(stack.pop());
         }
     }
 
-    public int get(int index) {
+    public int get(int index) { // slow?
         if (index < 0) {
             throw new ArrayIndexOutOfBoundsException();
         }
 
-        StackNode currentNode = start;
-        for (int i = 0; i <= index; i++) {
+        Stack storage = new Stack();
+        int returnValue = -1;
+        int currentNumber = pop();
+        int length = 0;
+        for (int i = 0; currentNumber != -1; i++) {
             if (i == index) {
-                return currentNode.getNumber();
+                returnValue = currentNumber;
             }
-            currentNode = currentNode.getNext();
+            storage.push(currentNumber);
+
+            currentNumber = pop();
+            length++;
         }
-        throw new ArrayIndexOutOfBoundsException();
+
+        if (length < index) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+
+        for (int j = 0; j <= length; j++) {
+            push(storage.pop());
+        }
+
+        return returnValue;
     }
 
     public String toString() {

@@ -1,6 +1,7 @@
 package com.ivik.excercises;
 
-import java.util.Queue;
+import com.ivik.excercises.hashmap.Person;
+import com.ivik.excercises.linkedlist.Node;
 
 public class Main {
 
@@ -29,14 +30,41 @@ public class Main {
 //        System.out.println(list);
 
 //        /* Stack */
-        Stack stack = new Stack();
-        for (int i = 0; i <= 10; i++) {
-            stack.push(i);
-        }
+//        Stack stack = new Stack();
+//        for (int i = 0; i <= 10; i++) {
+//            stack.push(i);
+//        }
+//        stack.remove(5);
+//        System.out.println(stack.toString());
 
-        stack.remove(5); // remove 7
-        System.out.println(stack.toString()); // [10, 9, 8, 6, 5, 4, 3, 2, 1, 0]
+        /* Stack sort */
 
+        // TODO: add stack sort
+
+        /* Queue */
+
+        // TODO: add queue code
+
+        /* HashSet */
+
+//        String elephant = "elephant"; // has duplicate characters
+//        System.out.println(MyHashSet.hasDuplicateChars(elephant)); // true
+//        System.out.println(MyHashSet.hasDuplicateCharsButBetter(elephant)); // true
+//
+//        String dog = "dog"; // doesn't have duplicate characters
+//        System.out.println(MyHashSet.hasDuplicateCharsButBetter(dog)); // false
+
+        /* HashMap */
+
+        Person[] people = {new Person(81, "George Rademacher"),
+                            new Person(68, "Jeffrey M. Cutler"),
+                            new Person(30, "John T. Graves"),
+                            new Person(32, "Kenneth B. Carver"),
+                            new Person(20 ,"Dorothy O. Matthews"),
+                            new Person(71, "Peggy C. Watterson"),
+                            new Person(70, "Thomas S. Redd"),
+                            new Person(61, "Aaron L. Dulaney"),
+                            new Person(58, "Jesse D. Millhouse")};
 
 
     }
