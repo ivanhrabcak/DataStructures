@@ -2,6 +2,10 @@ package com.ivik.excercises;
 
 import com.ivik.excercises.hashmap.Person;
 import com.ivik.excercises.linkedlist.Node;
+import com.ivik.excercises.queue.MyQueue;
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Main {
 
@@ -42,8 +46,16 @@ public class Main {
         // TODO: add stack sort
 
         /* Queue */
+        MyQueue queue = new MyQueue();
+        queue.add(1);
+        queue.add(2);
+        queue.add(3);
+        System.out.println(queue.getQueue());
 
-        // TODO: add queue code
+        System.out.println(queue.get(1));
+        queue.remove(0);
+        queue.switchElement(0, 1);
+        System.out.println(queue.getQueue());
 
         /* HashSet */
 
@@ -65,6 +77,7 @@ public class Main {
                             new Person(70, "Thomas S. Redd"),
                             new Person(61, "Aaron L. Dulaney"),
                             new Person(58, "Jesse D. Millhouse")};
+
 
 
     }
