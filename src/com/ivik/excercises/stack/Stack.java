@@ -2,6 +2,7 @@ package com.ivik.excercises.stack;
 
 public class Stack {
     private StackNode start;
+    private int size; // TODO: ADD SIZE TO ALL METHODS
 
     public void push(int i) {
         StackNode newNode = new StackNode(i);
@@ -19,6 +20,9 @@ public class Stack {
     }
 
     public int peek() {
+        if (start == null) {
+            return -1;
+        }
         return start.getNumber();
     }
 

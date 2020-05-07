@@ -3,6 +3,7 @@ package com.ivik.excercises.hashmap;
 import java.security.Key;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class MyHashMap {
     public final static char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
@@ -38,6 +39,24 @@ public class MyHashMap {
         }
 
         return allAges;
+    }
+
+    public Set<Person> getNonDuplicatePeople(Person[] people) {
+        HashMap<Person, Integer> counter = new HashMap<>();
+        for (Person person : people) {
+            if (counter.containsKey(person)) {
+                counter.remove(person);
+                continue;
+            }
+            counter.put(person, person.getAge());
+        }
+
+        int allAges = 0;
+        for (int age : counter.values()) {
+            allAges += age;
+        }
+
+        return counter.keySet();
     }
 
     public int countLetter(String s, char letter) {

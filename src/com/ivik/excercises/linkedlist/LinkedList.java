@@ -17,6 +17,24 @@ public class LinkedList {
         return l;
     }
 
+    public void removeMiddleElement() {
+        Node node1 = start;
+        Node node2 = start;
+        int index1 = 0;
+        int index2 = 0;
+        while (!(node2.next == null)) {
+            node2 = node2.next;
+            if (index2 % 3 == 0) {
+                index1++;
+                node1 = node1.next;
+            }
+            index2++;
+        }
+        node1.next.next = node1.next.next.next; // ?
+
+
+    }
+
     public void remove(int index) {
         if (index < 0) {
             throw new ArrayIndexOutOfBoundsException();
