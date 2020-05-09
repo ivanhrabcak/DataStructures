@@ -14,8 +14,9 @@ public class Main {
 
     public static void main(String[] args) {
         Node start = new Node();
+        start.number = 1;
         Node previousNode = start;
-        for (int i = 0; i <= 10; i++) {
+        for (int i = 2; i <= 10; i++) {
             Node nextNode = new Node(null, previousNode, i);
             previousNode.next = nextNode;
             previousNode = nextNode;
