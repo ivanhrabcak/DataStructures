@@ -30,7 +30,7 @@ public class LinkedList {
             }
             index2++;
         }
-        node1.next.next = node1.next.next.next; // ?
+        node1.next = node1.next.next; // ?
 
 
     }
