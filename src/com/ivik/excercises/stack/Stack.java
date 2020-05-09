@@ -2,12 +2,13 @@ package com.ivik.excercises.stack;
 
 public class Stack {
     private StackNode start;
-    private int size; // TODO: ADD SIZE TO ALL METHODS
+    private int size;
 
     public void push(int i) {
         StackNode newNode = new StackNode(i);
         newNode.setNext(start);
         start = newNode;
+        size++;
     }
 
     public int pop() {
@@ -16,7 +17,9 @@ public class Stack {
         }
         int value = start.getNumber();
         start = start.getNext();
+        size--;
         return value;
+
     }
 
     public int peek() {
@@ -28,27 +31,26 @@ public class Stack {
 
     public void empty() {
         start = null;
+        size = 0;
     }
 
     public void remove(int index) {
+        if (index > size) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+
         if (index < 0) {
             throw new ArrayIndexOutOfBoundsException();
         }
         int currentNumber = pop();
         Stack stack = new Stack();
-        int l = 0;
-        for (int i = 0; currentNumber != -1; i++) {
+        for (int i = 0; i < size; i++) {
             if (!(i == index)) {
                 stack.push(currentNumber);
-                l++;
             }
             currentNumber = pop();
         }
-
-        if (index > l) {
-            throw new ArrayIndexOutOfBoundsException();
-        }
-
+        int l = size;
         empty();
         for (int i = 0; i < l; i++) {
             push(stack.pop());
@@ -56,6 +58,10 @@ public class Stack {
     }
 
     public int get(int index) { // slow?
+        if (size < index) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+
         if (index < 0) {
             throw new ArrayIndexOutOfBoundsException();
         }
@@ -63,7 +69,7 @@ public class Stack {
         Stack storage = new Stack();
         int returnValue = -1;
         int currentNumber = pop();
-        int length = 0;
+        int length = size;
         for (int i = 0; currentNumber != -1; i++) {
             if (i == index) {
                 returnValue = currentNumber;
@@ -71,14 +77,11 @@ public class Stack {
             storage.push(currentNumber);
 
             currentNumber = pop();
-            length++;
         }
 
-        if (length < index) {
-            throw new ArrayIndexOutOfBoundsException();
-        }
 
-        for (int j = 0; j <= length; j++) {
+
+        for (int j = 0; j < length; j++) {
             push(storage.pop());
         }
 
